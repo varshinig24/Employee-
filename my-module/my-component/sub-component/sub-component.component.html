@@ -1,0 +1,42 @@
+<style>
+  table
+   {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse:collapse;
+    border: 1px  solid black;
+    }
+  td{
+    width: 25%;
+    border-collapse:collapse;
+    border: 1px  solid black;
+    
+  }
+  
+</style>
+<table>
+  <tr *ngIf="!employee.editing">
+    
+    <td>{{employee.id}}</td>
+    <td>{{employee.name}}</td>
+    <td>{{employee.department}} </td>
+    <td>{{employee.salary}}</td>
+    <td *ngIf="employee.header">Action</td>
+    <td *ngIf="!employee.header"><button (click)="edit($event)">Edit</button></td>
+   
+  </tr>
+
+  <tr *ngIf="employee.editing">
+    
+    <td><input type="text" [(ngModel)]="employeeCopy.id" /> </td>
+    <td><input type="text" [(ngModel)]="employeeCopy.name" /></td>
+    <td><input type="text" [(ngModel)]="employeeCopy.department" /></td>
+    <td><input type="text" [(ngModel)]="employeeCopy.salary" /></td>
+    <td *ngIf="employee.header">Action</td>
+    <td *ngIf="!employee.header">
+      <button (click)="editSave($event)">Done</button>
+      <button (click)="editCancel($event)">Cancel</button>
+    </td>
+   
+  </tr>
+</table>
